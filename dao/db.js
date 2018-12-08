@@ -1,6 +1,7 @@
-const {Client} = require('pg');
+const {Pool, Client} = require('pg');
 const connectionString = 'postgresql://avm:Pri8va2tE@localhost:5432/andromeda_test';
 let client;
+let pool;
 
 function getClient() {
     if (client) {// if it is already there, grab it here
@@ -10,6 +11,18 @@ function getClient() {
         client.connect().then(() => console.log("PostgreSQL connected..."))
             .catch((error) => console.error('PostgreSQL connection ERROR \n', error.stack));
         return client;
+    }
+
+}
+
+function getPool() {
+    if (pool) {// if it is already there, grab it here
+        return pool;
+    } else {
+        pool = new Pool({connectionString: connectionString});
+        pool.connect().then(() => console.log("PostgreSQL POOL connected..."))
+            .catch((error) => console.error('PostgreSQL connection ERROR \n', error.stack));
+        return pool;
     }
 
 }
@@ -24,9 +37,17 @@ function saveUser(user) {
 
 function findUser(candidate) {
     const query = {
-        text: `SELECT * from Users WHERE email = '${candidate.email}'`
+        text: `SELECT * FROM users WHERE email = '${candidate.email}'`
     };
     return getClient().query(query);
 }
 
-module.exports = {saveUser, findUser};
+function findUserById(id) {
+    const query = {
+        rowMode: 'json',
+        text: `SELECT id, email FROM users WHERE id = ${id}`
+    };
+    return getClient().query(query);
+}
+
+module.exports = {saveUser, findUser, findUserById};

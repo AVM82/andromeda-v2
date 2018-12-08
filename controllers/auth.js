@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../model/User');
 const db = require('../dao/db');
+const pref = require('../config/preference');
 
 module.exports.login = (req, res) => {
     const candidate = new User(req.body.email, req.body.password);
@@ -31,7 +32,7 @@ module.exports.login = (req, res) => {
                 const token = jwt.sign({
                     email: result.rows[0].email,
                     userId: result.rows[0].id
-                }, 'andromeda', {expiresIn: 60 * 60});
+                }, pref.jwtKey, {expiresIn: 60 * 60});
                 res.status(200).json({
                     token: `Bearer ${token}`
                 })
