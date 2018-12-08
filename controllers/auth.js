@@ -3,19 +3,16 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/User');
 const db = require('../dao/db');
 const pref = require('../config/preference');
+const errorHandler = require('../utils/errorHandler');
 
 module.exports.login = (req, res) => {
     const candidate = new User(req.body.email, req.body.password);
-
     db.findUser(candidate)
         .then((result) => {
             authorize(result);
         })
         .catch(e => {
-            res.status(500).json({
-                success: "false",
-                message: e.message
-            })
+            errorHandler(e, res);
         });
 
     function authorize(result) {
@@ -56,10 +53,7 @@ module.exports.register = (req, res) => {
             saveUser(result);
         })
         .catch((e) => {
-            res.status(500).json({
-                success: "false",
-                message: e.message
-            });
+            errorHandler(e, res);
         });
 
     function saveUser(result) {
@@ -79,10 +73,7 @@ module.exports.register = (req, res) => {
                     )
                 })
                 .catch((e) => {
-                    res.status(500).json({
-                        success: "false",
-                        message: e.message
-                    });
+                    errorHandler(e, res);
                 });
         }
     }

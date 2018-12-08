@@ -4,12 +4,16 @@ let client;
 let pool;
 
 function getClient() {
-    if (client) {// if it is already there, grab it here
-        return client;
+    if (client) {
+        return client; // if it is already there, grab it here
     } else {
         client = new Client({connectionString: connectionString});
-        client.connect().then(() => console.log("PostgreSQL connected..."))
-            .catch((error) => console.error('PostgreSQL connection ERROR \n', error.stack));
+        client.connect()
+            .then(() => console.log("PostgreSQL connected..."))
+            .catch((error) => {
+                console.error('PostgreSQL connection ERROR \n', error.stack);
+                client = null;
+            });
         return client;
     }
 
@@ -21,7 +25,10 @@ function getPool() {
     } else {
         pool = new Pool({connectionString: connectionString});
         pool.connect().then(() => console.log("PostgreSQL POOL connected..."))
-            .catch((error) => console.error('PostgreSQL connection ERROR \n', error.stack));
+            .catch((error) => {
+                console.error('PostgreSQL connection ERROR \n', error.stack);
+                pool = null;
+            });
         return pool;
     }
 
