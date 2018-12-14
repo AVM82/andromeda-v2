@@ -1,12 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
-import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
-import { ForgotPageComponent } from './forgot-page/forgot-page.component';
+import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.component';
+import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
+import {ForgotPageComponent} from './forgot-page/forgot-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { ForgotPageComponent } from './forgot-page/forgot-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

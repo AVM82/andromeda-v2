@@ -5,14 +5,44 @@
         <img src="../../assets/face.png" alt="">
       </div>
       <div class="col-12 form-input">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="E-mail">
+            <input
+              formControlName="email"
+              id='email'
+              type="email"
+              class="form-control"
+              placeholder="E-mail"
+              [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}">
+            <span class="invalid"
+                  *ngIf="form.get('email').invalid && form.get('email').touched">
+              <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым.</span>
+              <span *ngIf="form.get('email').errors['email']">Введите корректный email.</span>
+            </span>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password">
+            <input
+              formControlName="password"
+              id='password'
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}">
+            <span class="invalid"
+                  *ngIf="form.get('password').invalid && form.get('password').touched">
+              <span *ngIf="form.get('password').errors['required']">Пароль не должен быть пустым.</span>
+              <span *ngIf="form.get('password').errors['minlength']
+              && form.get('password').errors['minlength']['requiredLength']">
+                Пароль должен быть больше {{form.get('password').errors['minlength']['requiredLength']}} сималов.
+                Сейчас {{form.get('password').errors['minlength']['actualLength']}}
+              </span>
+            </span>
           </div>
-          <button type="submit" class="btn btn-success">Login</button>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="form.invalid">Login
+          </button>
         </form>
       </div>
       <div class="col-12 forgot">

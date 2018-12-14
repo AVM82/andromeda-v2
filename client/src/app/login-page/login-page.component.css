@@ -31,7 +31,7 @@
   font-size: 18px;
   padding-left: 54px;
 }
-.form-group::before {
+.form-group:before {
   content: "@";
   position: absolute;
   font-size: 22px;
@@ -40,7 +40,7 @@
   color: #555e60;
 }
 
-.form-group:last-of-type::before{
+.form-group:last-of-type:before{
   content: "\1F512";
 }
 
@@ -68,4 +68,11 @@
 
 .forgot a {
   color: #daf1ff;
+}
+
+.invalid {
+  width: 100%;
+  /*margin-top: 0.25rem;*/
+  /*font-size: 80%;*/
+  color: #dc030a;
 }
