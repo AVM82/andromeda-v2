@@ -11,6 +11,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.classList.add('bg-img');
   }
 
+  ngOnDestroy() {
+    document.body.classList.remove('bg-img');
+  }
 }
