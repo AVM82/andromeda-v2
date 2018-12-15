@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.component';
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {ForgotPageComponent} from './forgot-page/forgot-page.component';
+import {RegPageComponent } from './reg-page/reg-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ForgotPageComponent} from './forgot-page/forgot-page.component';
     LoginPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    ForgotPageComponent
+    ForgotPageComponent,
+    RegPageComponent
   ],
   imports: [
     BrowserModule,
