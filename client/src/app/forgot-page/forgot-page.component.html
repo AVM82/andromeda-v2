@@ -1,3 +1,33 @@
-<p>
-  forgot-page works!
-</p>
+<div class="modal-dialog text-center">
+  <div class="col-sm-9 main-section">
+    <div class="modal-content">
+      <div class="col-12 user-img">
+        <img src="../../assets/face.png" alt="">
+      </div>
+      <div class="col-12 form-input">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <label style="color: azure">Укажите свой E-mail</label>
+          <div class="form-group">
+            <input
+              formControlName="email"
+              id='email'
+              type="email"
+              class="form-control"
+              placeholder="E-mail"
+              [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}">
+            <span class="invalid"
+                  *ngIf="form.get('email').invalid && form.get('email').touched">
+              <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым.</span>
+              <span *ngIf="form.get('email').errors['email']">Введите корректный email.</span>
+            </span>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="form.invalid || form.disabled">Отправить
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

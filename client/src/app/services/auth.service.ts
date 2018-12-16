@@ -27,8 +27,8 @@ export class AuthService {
     )
   }
 
-  fogot() {
-
+  forgot(user: User): Observable<User>{
+   return this.http.post<User>('/api/auth/forgot', user);
   }
 
   register(user: User): Observable<User> {

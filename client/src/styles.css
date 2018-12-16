@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .bg-img
 {
-  background-image: url('/assets/loginBackground.jpg');
+  background-image: url('/assets/background.jpg');
   /*background-position: center;*/
   background-repeat: no-repeat;
   -moz-background-size: 100%; /* Firefox 3.6+ */

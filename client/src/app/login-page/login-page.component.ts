@@ -31,8 +31,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
           //Now you can login
         } else if (params['accessDenied']) {
           //Авторизуйтесь в системе
+        } else if (params['passRefreshed']){
+          //Find you new password in e-mail
         }
-
     })
   }
 

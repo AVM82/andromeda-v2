@@ -12,6 +12,6 @@ app.use(require('cors')());
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
 app.use('/api/auth', authRoutes);
-app.use('/user/', profile);
+app.use('/user', profile);
 
 module.exports = app;

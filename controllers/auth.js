@@ -1,9 +1,11 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
 const User = require('../model/User');
 const db = require('../dao/db');
 const pref = require('../config/preference');
 const errorHandler = require('../utils/errorHandler');
+const mailHandler = require('../utils/mailHandler');
 
 module.exports.login = (req, res) => {
     const candidate = new User(req.body.email, req.body.password);
@@ -75,6 +77,24 @@ module.exports.register = (req, res) => {
                 .catch((e) => {
                     errorHandler(e, res);
                 });
+        }
+    }
+};
+
+module.exports.forgot = (req, res) => {
+    db.findUserByEmail(req.body.email)
+        .then((result) => refreshed(result))
+        .catch((error) => errorHandler(error, res));
+
+    function refreshed(result) {
+        if (result.rows.length === 0) {
+            res.status(404).json({
+                success: "false",
+                message: "User not found"
+            })
+        } else {
+            const randomPassword = Math.random().toString(36).slice(-8);
+            mailHandler(res, req.body.email, randomPassword);
         }
     }
 };

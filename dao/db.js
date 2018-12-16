@@ -57,4 +57,12 @@ function findUserById(id) {
     return getClient().query(query);
 }
 
-module.exports = {saveUser, findUser, findUserById};
+function findUserByEmail(email) {
+    const query = {
+        rowMode: 'json',
+        text: `SELECT 1 FROM users WHERE email = '${email}'`
+    };
+    return getClient().query(query);
+}
+
+module.exports = {saveUser, findUser, findUserById, findUserByEmail};
