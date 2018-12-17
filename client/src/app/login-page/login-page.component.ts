@@ -12,7 +12,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class LoginPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
-  subscription: Subscription;
+  authSubscription: Subscription;
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -39,7 +39,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.form.disable();
-    this.subscription = this.auth.login(this.form.value).subscribe(
+    this.authSubscription = this.auth.login(this.form.value).subscribe(
       () => this.router.navigate(['/reg']),
       error => {
         console.warn(error);
@@ -49,8 +49,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.subscription) {
-      this.subscription.unsubscribe();
+    if(this.authSubscription) {
+      this.authSubscription.unsubscribe();
     }
     document.body.classList.remove('bg-img');
   }

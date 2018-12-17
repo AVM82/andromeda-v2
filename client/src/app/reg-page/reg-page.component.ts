@@ -12,7 +12,7 @@ import {Subscription} from "rxjs";
 export class RegPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
-  subscription: Subscription;
+  authSubscription: Subscription;
 
   constructor(private auth: AuthService,
               private router: Router) {
@@ -29,7 +29,7 @@ export class RegPageComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.form.disable();
-    this.subscription = this.auth.register(this.form.value).subscribe(
+    this.authSubscription = this.auth.register(this.form.value).subscribe(
       () => {
         this.router.navigate(['/login'], {
           queryParams: {
@@ -46,8 +46,8 @@ export class RegPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
     }
     document.body.classList.remove('bg-img');
   }

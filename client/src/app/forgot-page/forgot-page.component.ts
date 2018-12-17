@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ForgotPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  subscription: Subscription;
+  authSubscription: Subscription;
 
   constructor(private auth: AuthService,
               private  router: Router) { }
@@ -25,7 +25,7 @@ export class ForgotPageComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     this.form.disable();
-    this.subscription = this.auth.forgot(this.form.value).subscribe(
+    this.authSubscription = this.auth.forgot(this.form.value).subscribe(
       () => {
         this.router.navigate(['/login'],{
           queryParams: {
@@ -42,8 +42,8 @@ export class ForgotPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
     }
     document.body.classList.remove('bg-img');
   }
