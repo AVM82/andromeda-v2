@@ -45,10 +45,14 @@ module.exports.login = (req, res) => {
     }
 };
 
-module.exports.register = (req, res) => {
+function generatePasswordHash(password){
     const salt = bcrypt.genSaltSync(10);
-    const password = req.body.password;
-    const Candidate = new User(req.body.email, bcrypt.hashSync(password, salt));
+    return bcrypt.hashSync(password, salt);
+}
+
+module.exports.register = (req, res) => {
+
+    const Candidate = new User(req.body.email, generatePasswordHash(req.body.password));
 
     db.findUser(Candidate)
         .then((result) => {
@@ -94,7 +98,9 @@ module.exports.forgot = (req, res) => {
             })
         } else {
             const randomPassword = Math.random().toString(36).slice(-8);
-            mailHandler(res, req.body.email, randomPassword);
+            db.changePasswordForUser(req.body.email, generatePasswordHash(randomPassword))
+                .then(mailHandler(res, req.body.email, `Ваш новый пароль для входа в систему ${randomPassword}`))
+                .catch(error => errorHandler(error, res));
         }
     }
 };

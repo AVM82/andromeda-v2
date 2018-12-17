@@ -65,4 +65,12 @@ function findUserByEmail(email) {
     return getClient().query(query);
 }
 
-module.exports = {saveUser, findUser, findUserById, findUserByEmail};
+function changePasswordForUser(email, newRandomPassword) {
+    const query = {
+        rowMode: 'json',
+        text: `UPDATE users SET password = '${newRandomPassword}' WHERE email = '${email}'`
+    };
+    return getClient().query(query);
+}
+
+module.exports = {saveUser, findUser, findUserById, findUserByEmail, changePasswordForUser};

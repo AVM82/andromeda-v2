@@ -1,17 +1,20 @@
 const nodeMailer = require('nodemailer');
 const errorHandler = require('../utils/errorHandler');
+const pref = require('../config/preference');
 
 module.exports = (res, email, text) => {
     const transporter = nodeMailer.createTransport({
-        service: 'gmail',
+        host: pref.sendMailHost,
+        port: pref.sendMailPort,
+        secure: pref.sendMailSecure,
         auth: {
-            user: 'airkeeper2018@gmail.com',
-            pass: 'holoS58FYO'
+            user: pref.sendMailUser,
+            pass: pref.sendMailPassword
         }
     });
 
     const mailOptions = {
-        from: 'airkeeper2018@gmail.com',
+        from: pref.sendMailUser,
         to: email,
         subject: 'Email from Andromeda',
         text: text
