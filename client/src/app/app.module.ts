@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
 import {LoginPageComponent} from './login-page/login-page.component';
@@ -10,6 +10,7 @@ import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.comp
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {ForgotPageComponent} from './forgot-page/forgot-page.component';
 import {RegPageComponent } from './reg-page/reg-page.component';
+import {TokenInterceptor} from "./shared/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,13 @@ import {RegPageComponent } from './reg-page/reg-page.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
