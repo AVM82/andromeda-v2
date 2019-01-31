@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ToastService} from "../services/toast.service";
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +17,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toast: ToastService) {
   }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.authSubscription = this.auth.login(this.form.value).subscribe(
       () => this.router.navigate(['/reg']),
       error => {
-        console.warn(error);
+        this.toast.showError(error.error.message);
         this.form.enable();
       }
     )

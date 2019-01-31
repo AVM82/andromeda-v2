@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import {ToastService} from "../services/toast.service";
 
 @Component({
   selector: 'app-forgot-page',
@@ -14,7 +15,8 @@ export class ForgotPageComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
 
   constructor(private auth: AuthService,
-              private  router: Router) { }
+              private  router: Router,
+              private toast: ToastService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -34,7 +36,7 @@ export class ForgotPageComponent implements OnInit, OnDestroy {
         })
       },
       error => {
-        console.warn(error);
+        this.toast.showError(error.error.message);
         this.form.enable();
       }
     );

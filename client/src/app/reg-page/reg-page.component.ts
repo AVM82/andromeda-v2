@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {ToastService} from "../services/toast.service";
 
 @Component({
   selector: 'app-reg-page',
@@ -15,7 +16,8 @@ export class RegPageComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
 
   constructor(private auth: AuthService,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastService) {
 
   }
 
@@ -38,7 +40,7 @@ export class RegPageComponent implements OnInit, OnDestroy {
         })
       },
       error => {
-        console.warn(error);
+        this.toast.showError(error.error.message);
         this.form.enable();
       }
     )

@@ -11,6 +11,8 @@ import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.comp
 import {ForgotPageComponent} from './forgot-page/forgot-page.component';
 import {RegPageComponent } from './reg-page/reg-page.component';
 import {TokenInterceptor} from "./shared/token.interceptor";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ng6-toastr-notifications";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {TokenInterceptor} from "./shared/token.interceptor";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
