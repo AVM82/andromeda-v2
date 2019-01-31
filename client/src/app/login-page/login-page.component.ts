@@ -33,10 +33,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
           //Now you can login
         } else if (params['accessDenied']) {
           //Авторизуйтесь в системе
-        } else if (params['passRefreshed']){
+        } else if (params['passRefreshed']) {
           //Find you new password in e-mail
+        } else if (params['sessionFailed']) {
+          this.toast.showInfo('Invalid token, login again');
         }
-    })
+      })
   }
 
   onSubmit() {
@@ -51,7 +53,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.authSubscription) {
+    if (this.authSubscription) {
       this.authSubscription.unsubscribe();
     }
     document.body.classList.remove('bg-img');
