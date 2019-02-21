@@ -6,6 +6,7 @@ import {LoginPageComponent} from "./login-page/login-page.component";
 import {ForgotPageComponent} from "./forgot-page/forgot-page.component";
 import {RegPageComponent} from "./reg-page/reg-page.component";
 import {AuthGuard} from "./shared/auth.guard";
+import {OverviewPageComponent} from "./overview-page/overview-page.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: '', component:SiteLayoutComponent, canActivate:[AuthGuard], children: []
+    path: '', component:SiteLayoutComponent, canActivate:[AuthGuard], children: [
+      {path:'overview', component: OverviewPageComponent}
+    ]
   }
 ];
 

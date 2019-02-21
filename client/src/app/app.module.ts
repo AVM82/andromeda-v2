@@ -13,6 +13,8 @@ import {RegPageComponent } from './reg-page/reg-page.component';
 import {TokenInterceptor} from "./shared/token.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ng6-toastr-notifications";
+import { OverviewPageComponent } from './overview-page/overview-page.component';
+import { NavbarLayoutComponent } from './shared/layouts/navbar-layout/navbar-layout.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {ToastrModule} from "ng6-toastr-notifications";
     AuthLayoutComponent,
     SiteLayoutComponent,
     ForgotPageComponent,
-    RegPageComponent
+    RegPageComponent,
+    OverviewPageComponent,
+    NavbarLayoutComponent
   ],
   imports: [
     BrowserModule,
