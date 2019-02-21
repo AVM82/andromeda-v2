@@ -1,13 +1,25 @@
-<div class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-  </div>
-  <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-</div>
+<nav class="navbar navbar-light " style="background-color: #51c6ea">
+  <a class="navbar-brand " href="/overview">Андромеда</a>
+
+  <ul class="nav justify-content-end align-middle">
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link active" href="#">Active</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" href="#">Link</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link" href="#">Link</a>-->
+    <!--</li>-->
+    <li class="nav-item dropdown d-none d-xl-inline-block">
+      <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <img class="img-xs rounded-circle" src="../../../../assets/face.png" alt="Изображение профиля">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+        <a class="dropdown-item" href="#">Изменить пароль</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Выход</a>
+      </div>
+    </li>
+  </ul>
+</nav>
