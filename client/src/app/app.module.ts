@@ -14,7 +14,7 @@ import {TokenInterceptor} from "./shared/token.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ng6-toastr-notifications";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
-import { NavbarLayoutComponent } from './shared/layouts/navbar-layout/navbar-layout.component';
+import { SidebarLayoutComponent } from './shared/layouts/sidebar-layout/sidebar-layout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { NavbarLayoutComponent } from './shared/layouts/navbar-layout/navbar-lay
     ForgotPageComponent,
     RegPageComponent,
     OverviewPageComponent,
-    NavbarLayoutComponent
+    SidebarLayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarLayoutComponent } from './navbar-layout.component';
+import { SidebarLayoutComponent } from './sidebar-layout.component';
 
-describe('NavbarLayoutComponent', () => {
-  let component: NavbarLayoutComponent;
-  let fixture: ComponentFixture<NavbarLayoutComponent>;
+describe('SidebarLayoutComponent', () => {
+  let component: SidebarLayoutComponent;
+  let fixture: ComponentFixture<SidebarLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarLayoutComponent ]
+      declarations: [ SidebarLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarLayoutComponent);
+    fixture = TestBed.createComponent(SidebarLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
