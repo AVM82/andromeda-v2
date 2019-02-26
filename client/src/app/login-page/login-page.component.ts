@@ -30,10 +30,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe(
       (params: Params) => {
         if (params['registered']) {
-          //Now you can login
+          this.toast.showSuccess('Теперь вы пожете войти в систему')
         } else if (params['accessDenied']) {
-          //Авторизуйтесь в системе
+          this.toast.showError('Отказано в доступе')
         } else if (params['passRefreshed']) {
+          this.toast.showInfo('На e-mail был отправлен новый пароль')
           //Find you new password in e-mail
         } else if (params['sessionFailed']) {
           this.toast.showInfo('Invalid token, login again');
