@@ -5,3 +5,10 @@
   font-size: 18px;
   color: #54bcff;
 }
+
+.list-group-item.active {
+  font-weight: bold;
+  color: #495057;
+  background-color: #dae0e5 !important;
+  border-bottom: 1px solid rgba(0,0,0,.125)!important;
+}

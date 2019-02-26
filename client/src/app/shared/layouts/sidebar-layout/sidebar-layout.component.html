@@ -1,12 +1,17 @@
+<div class="list-group list-group-flush" *ngFor="let link of links">
+  <!--<a href="/overview" class="list-group-item list-group-item-action bg-light">-->
+  <!--<i class="menu-icon fas fa-tachometer-alt"></i>-->
+  <!--Обзор</a>-->
+  <a
+    [routerLink]="[link.url]"
+    class="list-group-item list-group-item-action bg-light"
+    routerLinkActive="active"
+  >
+    {{link.name}}
+  </a>
+</div>
 <div class="list-group list-group-flush">
-  <a href="/overview" class="list-group-item list-group-item-action bg-light">
-    <!--<i class="menu-icon fas fa-tachometer-alt"></i>-->
-    Обзор</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Календарь</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Исследования</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Пациенты</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">График визитов</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Статистика</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Чат</a>
-  <a href="#" class="list-group-item list-group-item-action bg-light">Выход</a>
+  <a href="#" class="list-group-item list-group-item-action bg-light" (click)="logout($event)">
+    Выйти
+  </a>
 </div>

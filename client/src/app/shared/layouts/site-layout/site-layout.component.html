@@ -1,5 +1,5 @@
 <!-- top-nav-bar -->
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #51c6ea">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow" style="background-color: #51c6ea">
   <span class="nav-link">
     <a class="navbar-brand " href="/overview">Андромеда</a>
     <i class="fas fa-bars"></i>
@@ -12,7 +12,7 @@
       <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
         <a class="dropdown-item" href="#">Изменить пароль</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Выход</a>
+        <a class="dropdown-item" href="#" (click)="logout($event)">Выход</a>
       </div>
     </li>
   </ul>
