@@ -7,6 +7,12 @@ import {ForgotPageComponent} from "./forgot-page/forgot-page.component";
 import {RegPageComponent} from "./reg-page/reg-page.component";
 import {AuthGuard} from "./shared/auth.guard";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
+import {CalendarPageComponent} from "./calendar-page/calendar-page.component";
+import {ResearchPageComponent} from "./research-page/research-page.component";
+import {PatientsPageComponent} from "./patients-page/patients-page.component";
+import {VisitsPageComponent} from "./visits-page/visits-page.component";
+import {StatisticsPageComponent} from "./statistics-page/statistics-page.component";
+import {ChatPageComponent} from "./chat-page/chat-page.component";
 
 const routes: Routes = [
   {
@@ -19,7 +25,13 @@ const routes: Routes = [
   },
   {
     path: '', component:SiteLayoutComponent, canActivate:[AuthGuard], children: [
-      {path:'overview', component: OverviewPageComponent}
+      {path:'overview', component: OverviewPageComponent},
+      {path:'calendar', component: CalendarPageComponent},
+      {path:'research', component: ResearchPageComponent},
+      {path:'patients', component: PatientsPageComponent},
+      {path:'visits', component: VisitsPageComponent},
+      {path:'statistics', component: StatisticsPageComponent},
+      {path:'chat', component: ChatPageComponent}
     ]
   }
 ];

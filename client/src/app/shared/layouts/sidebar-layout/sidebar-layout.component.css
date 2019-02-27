@@ -10,5 +10,6 @@
   font-weight: bold;
   color: #495057;
   background-color: #dae0e5 !important;
-  border-bottom: 1px solid rgba(0,0,0,.125)!important;
+  border-bottom: 1px solid !important;
+  border-color: rgba(0,0,0,.125)!important;
 }

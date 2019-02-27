@@ -15,6 +15,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ng6-toastr-notifications";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { SidebarLayoutComponent } from './shared/layouts/sidebar-layout/sidebar-layout.component';
+import { CalendarPageComponent } from './calendar-page/calendar-page.component';
+import { ResearchPageComponent } from './research-page/research-page.component';
+import { PatientsPageComponent } from './patients-page/patients-page.component';
+import { VisitsPageComponent } from './visits-page/visits-page.component';
+import { StatisticsPageComponent } from './statistics-page/statistics-page.component';
+import { ChatPageComponent } from './chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,13 @@ import { SidebarLayoutComponent } from './shared/layouts/sidebar-layout/sidebar-
     ForgotPageComponent,
     RegPageComponent,
     OverviewPageComponent,
-    SidebarLayoutComponent
+    SidebarLayoutComponent,
+    CalendarPageComponent,
+    ResearchPageComponent,
+    PatientsPageComponent,
+    VisitsPageComponent,
+    StatisticsPageComponent,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,
