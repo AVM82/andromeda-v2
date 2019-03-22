@@ -73,4 +73,12 @@ function changePasswordForUser(email, newRandomPassword) {
     return getClient().query(query);
 }
 
-module.exports = {saveUser, findUser, findUserById, findUserByEmail, changePasswordForUser};
+function selectAllResearch() {
+    const query = {
+        rowMode: 'json',
+        text: `SELECT * FROM RESEARCH ORDER BY _id`
+    };
+    return getClient().query(query);
+}
+
+module.exports = {saveUser, findUser, findUserById, findUserByEmail, changePasswordForUser, selectAllResearch};

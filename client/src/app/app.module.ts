@@ -21,6 +21,7 @@ import { PatientsPageComponent } from './patients-page/patients-page.component';
 import { VisitsPageComponent } from './visits-page/visits-page.component';
 import { StatisticsPageComponent } from './statistics-page/statistics-page.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
     PatientsPageComponent,
     VisitsPageComponent,
     StatisticsPageComponent,
-    ChatPageComponent
+    ChatPageComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

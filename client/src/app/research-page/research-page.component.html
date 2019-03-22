@@ -1,3 +1,38 @@
-<p>
-  research-page works!
-</p>
+<div class="page-title">
+  <h4>Исследования</h4>
+  <button type="button" class="btn btn-primary" routerLink="/research/new">Добавить</button>
+</div>
+<div class="d-flex">
+  <form class="form-inline">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="findResearch" placeholder="Название исследования">
+    <button type="submit" class="btn btn-primary mb-2">Найти</button>
+  </form>
+</div>
+
+<div class="row" *ngIf="research$ | async as research; else loader">
+  <table class="table table-hover" *ngIf="research.length !==0; else empty">
+    <thead class="thead-light">
+    <tr>
+      <th *ngFor="let title of researchTableHeader">{{title}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let research of research">
+      <th scope="row">{{research._id}}</th>
+      <td>{{research.r_name}}</td>
+      <td>{{research.org_id}}</td>
+      <td>{{research.init_date}}</td>
+      <td>{{research.last_patient_date}}</td>
+      <td>{{research.active}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #empty>
+  <div class="h3 notFound"><span>Ничего не найдено</span></div>
+</ng-template>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
